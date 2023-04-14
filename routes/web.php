@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WorkSpacesController;
 use LionRoute\Route;
 
 /**
@@ -10,4 +11,11 @@ use LionRoute\Route;
  * ------------------------------------------------------------------------------
  **/
 
-Route::get('/', fn() => info("Welcome to index: " . Carbon\Carbon::now()->format('Y-m-d')));
+Route::prefix('api', function() {
+    Route::prefix('work-spaces', function() {
+        Route::post('create', [WorkSpacesController::class, 'createWorkSpaces']);
+        Route::get('read', [WorkSpacesController::class, 'readWorkSpaces']);
+        Route::put('update', [WorkSpacesController::class, 'updateWorkSpaces']);
+        Route::delete('delete', [WorkSpacesController::class, 'deleteWorkSpaces']);
+    });
+});

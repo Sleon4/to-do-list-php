@@ -2,26 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\WorkSpacesModel;
+use Database\Class\To_do_list\WorkSpaces;
+
 class WorkSpacesController {
 
+    private WorkSpacesModel $workSpacesModel;
+
 	public function __construct() {
-
+        $this->workSpacesModel = new WorkSpacesModel();
 	}
 
-	public function create() {
-
+	public function createWorkSpaces() {
+        return $this->workSpacesModel->createWorkSpacesDB(
+            WorkSpaces::formFields()
+        );
 	}
 
-	public function read() {
-
+	public function readWorkSpaces() {
+        return $this->workSpacesModel->readWorkSpacesDB();
 	}
 
-	public function update() {
-
+	public function updateWorkSpaces() {
+        return $this->workSpacesModel->updateWorkSpacesDB(
+            WorkSpaces::formFields()
+        );
 	}
 
-	public function delete() {
-
+	public function deleteWorkSpaces() {
+        return $this->workSpacesModel->deleteWorkSpacesDB(
+            WorkSpaces::formFields()
+        );
 	}
 
 }
