@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\TasksController;
 use App\Http\Controllers\WorkSpacesController;
 use LionRoute\Route;
 
@@ -25,5 +26,12 @@ Route::prefix('api', function() {
         Route::get('read', [CategoriesController::class, 'readCategories']);
         Route::put('update', [CategoriesController::class, 'updateCategories']);
         Route::delete('delete', [CategoriesController::class, 'deleteCategories']);
+    });
+
+    Route::prefix('tasks', function() {
+        Route::post('create', [TasksController::class, 'createTasks']);
+        Route::post('read', [TasksController::class, 'readTasks']);
+        Route::post('update', [TasksController::class, 'updateTasks']);
+        Route::post('delete', [TasksController::class, 'deleteTasks']);
     });
 });

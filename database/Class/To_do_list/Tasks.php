@@ -5,6 +5,7 @@ namespace Database\Class\To_do_list;
 class Tasks implements \JsonSerializable {
 
 	private ?int $idtasks = null;
+	private ?int $idcategories = null;
 	private ?string $tasks_name = null;
 	private ?string $tasks_description = null;
 	private ?string $tasks_creation_date = null;
@@ -23,6 +24,10 @@ class Tasks implements \JsonSerializable {
 
 		$tasks->setIdtasks(
 			isset(request->idtasks) ? request->idtasks : null
+		);
+
+		$tasks->setIdcategories(
+			isset(request->idcategories) ? request->idcategories : null
 		);
 
 		$tasks->setTasksName(
@@ -50,6 +55,15 @@ class Tasks implements \JsonSerializable {
 
 	public function setIdtasks(?int $idtasks): Tasks {
 		$this->idtasks = $idtasks;
+		return $this;
+	}
+
+	public function getIdcategories(): ?int {
+		return $this->idcategories;
+	}
+
+	public function setIdcategories(?int $idcategories): Tasks {
+		$this->idcategories = $idcategories;
 		return $this;
 	}
 
